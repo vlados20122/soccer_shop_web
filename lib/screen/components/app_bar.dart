@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -51,6 +53,7 @@ addAutomaticKeepAlives: false,
                   child: SvgPicture.asset(
                     'assets/svg/logosoccer.svg',
                     color: kTextcolor,
+                    currentColor: Colors.white,
                     height: 30,
                   )),
               SizedBox(width: size.width/3),
@@ -64,12 +67,20 @@ addAutomaticKeepAlives: false,
                   press: () {
                     Navigator.pushNamed(context, '/shop');
                   }),
-              MenuItem(title: 'Корзина', press: () {}),
-              MenuItem(
-                  title: "Контакти",
-                  press: () {
-                    Navigator.pushNamed(context, '/contact');
-                  }),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  CircleAvatar(child: Text('0',style: TextStyle(color: Colors.white),),radius: 10,backgroundColor: Colors.deepOrange,),
+                  MenuItem(
+                      title: "Козрина",
+                      press: () {
+
+                      }),
+                ],
+              ),
+              MenuItem(title: 'Контакти', press: () {
+                Navigator.pushNamed(context, '/contact');
+              }),
               MenuItem(title: 'Залогінитися', press: () {
                 Navigator.of(context).pushNamed('/login_screen');
               }),

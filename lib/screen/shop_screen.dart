@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:soccer_shop_web/screen/components/bottom_panel.dart';
 import 'package:soccer_shop_web/screen/components/side_bar.dart';
 import 'components/app_bar.dart';
 import 'class_build/grid_view_class.dart';
@@ -19,34 +21,39 @@ class ShopScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-        child: Column(
-          children: [
-            CustomAppBar(witgets: SizedBox(),),
-            Container(
-              height: size.height / 1.3,
-              child: ListView(
-                children: [
-                  Column(
-                    children: [
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            SideBar(),
-                            Container(
-                              height: size.height / 1.5,
-                              width: size.height * 1.345,
-                              child: GridViewClass(),
-                            ),
-                          ],
+        child: SingleChildScrollView(
+          physics: ScrollPhysics(parent: PageScrollPhysics()),
+          child: Column(
+            children: [
+              CustomAppBar(witgets: SizedBox(),),
+              Container(
+                height: size.height / 1.3,
+                child: ListView(
+                  children: [
+                    Column(
+                      children: [
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SideBar(),
+                              Container(
+                                height: size.height ,
+                                width: size.height * 1.345,
+                                child: GridViewClass(),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              BottomPanel(),
+            ],
+          ),
         ),
       ),
     );

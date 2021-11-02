@@ -126,8 +126,8 @@ class _GridViewBuildClassState extends State<GridViewBuildClass> {
           builder: (context, snapshot) {
             return GridView.builder(
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 300,
-                  mainAxisExtent: 220,
+                  maxCrossAxisExtent: 350,
+                  mainAxisExtent: 350,
                   crossAxisSpacing: 20,
                   mainAxisSpacing: 20),
               itemCount: _provider.items.length,
@@ -145,7 +145,7 @@ class _GridViewBuildClassState extends State<GridViewBuildClass> {
                           elevation: 5,
                           shape: UnderlineInputBorder(
                               borderSide:
-                                  BorderSide(width: 80, color: Colors.white),
+                                  BorderSide(width: 80, color: Colors.white.withOpacity(0.7)),
                               borderRadius: BorderRadius.circular(15)),
                           child: Container(
                             alignment: Alignment.center,
@@ -171,7 +171,7 @@ class _GridViewBuildClassState extends State<GridViewBuildClass> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(10),
-                              child: Text('${_provider.items[i].title}'),
+                              child: Text('${_provider.items[i].title}',style: TextStyle(fontWeight: FontWeight.bold),),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(10),

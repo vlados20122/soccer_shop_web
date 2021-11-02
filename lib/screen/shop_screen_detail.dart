@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soccer_shop_web/screen/components/app_bar.dart';
+import 'package:soccer_shop_web/screen/components/bottom_panel.dart';
 import 'package:soccer_shop_web/screen/components/side_bar.dart';
 
 import 'class_build/grid_view_build_class.dart';
@@ -24,34 +25,39 @@ class _ShopScreenDetailState extends State<ShopScreenDetail> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          children: [
-            CustomAppBar(witgets: SizedBox(),),
-            Container(
-              height: size.height / 1.3,
-              child: ListView(
-                children: [
-                  Column(
-                    children: [
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            SideBar(),
-                            Container(
-                              height: size.height / 1.5,
-                              width: size.height * 1.345,
-                              child: GridViewBuildClass(),
-                            ),
-                          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              CustomAppBar(witgets: SizedBox(),),
+              Container(
+                height: size.height ,
+                child: ListView(
+                  children: [
+                    Column(
+                      children: [
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+
+                            children: [
+                              SideBar(),
+                              Container(
+                                height: size.height *1.3,
+                                width: size.height * 1.345,
+                                child: GridViewBuildClass(),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              BottomPanel(),
+            ],
+          ),
         ),
       ),
     );
