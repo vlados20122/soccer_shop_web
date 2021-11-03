@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../constant.dart';
+import 'package:provider/provider.dart';
+import 'package:soccer_shop_web/model_material_shop/cart.dart';
 import 'menu_item.dart';
 
 class CustomAppBar extends StatefulWidget {
@@ -22,6 +22,16 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final cart = Provider.of<Cart>(context);
+
+    // _launchURL() async {
+    //   const url = 'https://www.facebook.com/profile.php?id=100015291971348';
+    //   if (await canLaunch(url)) {
+    //     await launch(url);
+    //   } else {
+    //     throw 'Could not launch $url';
+    //   }
+    // }
     return Container(
       margin: EdgeInsets.all(20),
       width: size.width,
@@ -49,12 +59,9 @@ addAutomaticKeepAlives: false,
                   onTap: () {
                     Navigator.pushReplacementNamed(context, '/shop');
                   },
-                  splashColor: Colors.black,
                   child: SvgPicture.asset(
-                    'assets/svg/logosoccer.svg',
-                    color: kTextcolor,
-                    currentColor: Colors.white,
-                    height: 30,
+                    'assets/svg/logofinal.svg',
+                    width: size.width/8,
                   )),
               SizedBox(width: size.width/3),
               MenuItem(
@@ -67,17 +74,16 @@ addAutomaticKeepAlives: false,
                   press: () {
                     Navigator.pushNamed(context, '/shop');
                   }),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  CircleAvatar(child: Text('0',style: TextStyle(color: Colors.white),),radius: 10,backgroundColor: Colors.deepOrange,),
-                  MenuItem(
-                      title: "Козрина",
-                      press: () {
+                  Row(
+                    children: [
+                      MenuItem(
+                          title: "Козрина",
+                          press: () =>
+                            Navigator.of(context).pushNamed('/cart_screen')),
+                      CircleAvatar(backgroundColor: Colors.red,minRadius: 5,maxRadius: 10,child: Text('${cart.itemCount.toString()}',style: TextStyle(color: Colors.white),)),
+                      ],
+                  ),
 
-                      }),
-                ],
-              ),
               MenuItem(title: 'Контакти', press: () {
                 Navigator.pushNamed(context, '/contact');
               }),
@@ -85,7 +91,8 @@ addAutomaticKeepAlives: false,
                 Navigator.of(context).pushNamed('/login_screen');
               }),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                },
                 child: const Text(
                   'Зареєструватися',
                   style: TextStyle(color: Colors.white, fontSize: 20),

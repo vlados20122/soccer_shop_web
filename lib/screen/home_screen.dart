@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:soccer_shop_web/model_material_shop/info_detail_products.dart';
+import 'package:soccer_shop_web/model_material_shop/product_detail.dart';
 import 'package:soccer_shop_web/screen/contacts_screen.dart';
 import 'package:soccer_shop_web/screen/login_sceern.dart';
+import 'package:soccer_shop_web/screen/cart_screen.dart';
 import 'package:soccer_shop_web/screen/shop_screen.dart';
 import 'package:soccer_shop_web/screen/shop_screen_detail.dart';
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
           '/shop_detail': (context) => ShopScreenDetail(),
           '/product_detail': (context) => InfoDetailProducts(),
           '/login_screen': (context) => LoginScreen(),
+          '/cart_screen': (context) => CartScreen(),
         });
   }
 }

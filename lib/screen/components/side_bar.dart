@@ -11,7 +11,7 @@ class SideBar extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 450,
+          height: 400,
           width: 300,
           decoration: BoxDecoration(
               color: Colors.white,

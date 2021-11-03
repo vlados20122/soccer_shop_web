@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BottomPanel extends StatefulWidget {
   BottomPanel({Key? key}) : super(key: key);
@@ -11,20 +13,52 @@ class _BottomPanelState extends State<BottomPanel> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    _launchURL(String url) async {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
     return Container(
-      width: size.width,
       margin: EdgeInsets.only(top: 100),
+      width: size.width,
       height: size.height / 15,
-      color: Colors.white,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly  ,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Icon(Icons.arrow_forward_ios),
-          Icon(Icons.info_outline_sharp),
-          Icon(Icons.transfer_within_a_station_rounded),
-          Icon(Icons.title),
-        ],
+      color: Colors.black,
+      child: Scrollbar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            InkWell(
+                onTap: () => _launchURL(
+                    'https://www.facebook.com/soccershopcomua/'),
+                child: Container(
+                    width: 100,
+                    child: SvgPicture.asset('assets/svg/facebook.svg'))),
+            InkWell(
+                onTap: () => _launchURL(
+                    'https://www.instagram.com/boychuk_bohdan_/'),
+                child: Container(
+                    width: 100,
+                    child: Image(
+                        image: AssetImage('assets/images/intagramlogo.png')))),
+            InkWell(
+                onTap: () => _launchURL(
+                    'https://twitter.com/WrldSoccerShop?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'),
+                child: Container(
+                    width: 100,
+                    child: SvgPicture.asset('assets/svg/twitter.svg'))),
+            InkWell(
+                onTap: () => _launchURL(
+                   'https://www.youtube.com/channel/UCNp37lt-A1GSZWsfplwCJbg'),
+                child: Container(
+                    width: 100,
+                    child: SvgPicture.asset(
+                      'assets/svg/youtubelogo.svg',
+                    ))),
+          ],
+        ),
       ),
     );
   }

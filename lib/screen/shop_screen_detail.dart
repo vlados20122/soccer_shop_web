@@ -21,7 +21,7 @@ class _ShopScreenDetailState extends State<ShopScreenDetail> {
         width: size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/realm.jpg'),
+            image: AssetImage('assets/images/logosoccerbig.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -35,20 +35,10 @@ class _ShopScreenDetailState extends State<ShopScreenDetail> {
                   children: [
                     Column(
                       children: [
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-
-                            children: [
-                              SideBar(),
-                              Container(
-                                height: size.height *1.3,
-                                width: size.height * 1.345,
-                                child: GridViewBuildClass(),
-                              ),
-                            ],
-                          ),
+                        Container(
+                          height: size.height ,
+                          width: size.width,
+                          child: GridViewBuildClass(),
                         ),
                       ],
                     ),

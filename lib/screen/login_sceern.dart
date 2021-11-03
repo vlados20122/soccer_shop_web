@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:soccer_shop_web/screen/components/app_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -19,21 +18,20 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Container(
         height: size.height,
         width: size.width,
-        color: Colors.black.withOpacity(0.9),
+        decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/logosoccerbig.png'),fit: BoxFit.cover),),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 100),
-              // CustomAppBar(witgets: SizedBox()),
+              SizedBox(height: 150),
               Container(
-                height: 150.0,
-                width: 190.0,
+                height: size.height/5,
+                width: size.width/5,
                 padding: EdgeInsets.only(top: 40),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(200),
                 ),
                 child: Center(
-                  child: SvgPicture.asset('assets/svg/logosoccer.svg',color: Colors.green,),
+                  child: SvgPicture.asset('assets/svg/logofinal.svg',),
                 ),
               ),
               Container(
@@ -50,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(
-                height: 50
+                height: 10
               ),
               Container(
                 width: 500,
